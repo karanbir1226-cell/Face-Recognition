@@ -19,8 +19,8 @@ function Login() {
     try {
       const endpoint =
         role === "student"
-          ? "http://127.0.0.1:8000/auth/student-login"
-          : "http://127.0.0.1:8000/auth/admin-login";
+          ? "http://https://face-recognition-2-4pc8.onrender.com/auth/student-login"
+          : "http://https://face-recognition-2-4pc8.onrender.com/auth/admin-login";
 
       const response = await fetch(endpoint, {
         method: "POST",

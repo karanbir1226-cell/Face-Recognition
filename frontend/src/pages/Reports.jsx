@@ -7,7 +7,7 @@ function Reports() {
   const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/attendance/", {
+    fetch("http://https://face-recognition-2-4pc8.onrender.com/attendance/", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
       },

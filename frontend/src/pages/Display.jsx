@@ -59,7 +59,7 @@ function Display() {
     useCallback(async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/attendance/",
+          "http://https://face-recognition-2-4pc8.onrender.com/attendance/",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
@@ -241,7 +241,7 @@ function Display() {
 
         const response =
           await fetch(
-            "http://127.0.0.1:8000/recognize/",
+            "http://https://face-recognition-2-4pc8.onrender.com/recognize/",
             {
               method: "POST",
 

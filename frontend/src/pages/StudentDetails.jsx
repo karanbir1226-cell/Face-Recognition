@@ -15,7 +15,7 @@ function StudentDetails() {
         setLoading(true);
         setError("");
 
-        const response = await fetch("http://127.0.0.1:8000/students/", {
+        const response = await fetch("http://https://face-recognition-2-4pc8.onrender.com/students/", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,

@@ -21,7 +21,7 @@ function StudentAttendance() {
         }
 
         const response = await fetch(
-          "http://127.0.0.1:8000/attendance/my-attendance",
+          "http://https://face-recognition-2-4pc8.onrender.com/attendance/my-attendance",
           {
             headers: {
               Authorization: `Bearer ${token}`,

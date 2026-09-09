@@ -25,7 +25,7 @@ function EditStudent() {
     const fetchStudent = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/students/",
+          "http://https://face-recognition-2-4pc8.onrender.com/students/",
           {
             method: "GET",
             headers: {
@@ -85,7 +85,7 @@ function EditStudent() {
       setError("");
 
       const response = await fetch(
-        `http://127.0.0.1:8000/students/${id}`,
+        `http://https://face-recognition-2-4pc8.onrender.com/students/${id}`,
         {
           method: "PUT",
           headers: {
