@@ -15,7 +15,7 @@ function StudentDetails() {
         setLoading(true);
         setError("");
 
-        const response = await fetch("http://https://face-recognition-2-4pc8.onrender.com/students/", {
+        const response = await fetch("https://face-recognition-2-4pc8.onrender.com/students/", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,

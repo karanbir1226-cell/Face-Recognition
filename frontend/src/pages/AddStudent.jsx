@@ -32,7 +32,7 @@ function AddStudent() {
     setError("");
 
     try {
-      const response = await fetch("http://https://face-recognition-2-4pc8.onrender.com/students/", {
+      const response = await fetch("https://face-recognition-2-4pc8.onrender.com/students/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

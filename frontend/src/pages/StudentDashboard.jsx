@@ -30,11 +30,11 @@ function StudentDashboard() {
         const [summaryResponse, classesResponse] =
           await Promise.all([
             fetch(
-              "http://https://face-recognition-2-4pc8.onrender.com/attendance/my-summary",
+              "https://face-recognition-2-4pc8.onrender.com/attendance/my-summary",
               { headers }
             ),
             fetch(
-              "http://https://face-recognition-2-4pc8.onrender.com/classes/my-classes",
+              "https://face-recognition-2-4pc8.onrender.com/classes/my-classes",
               { headers }
             ),
           ]);

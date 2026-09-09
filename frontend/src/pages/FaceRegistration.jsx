@@ -206,7 +206,7 @@ function FaceRegistration() {
       setCameraError("");
 
       const response = await fetch(
-        `http://https://face-recognition-2-4pc8.onrender.com/students/${id}/face`,
+        `https://face-recognition-2-4pc8.onrender.com/students/${id}/face`,
         {
           method: "PUT",
           headers: {

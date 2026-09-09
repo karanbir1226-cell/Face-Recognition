@@ -19,8 +19,8 @@ function Login() {
     try {
       const endpoint =
         role === "student"
-          ? "http://https://face-recognition-2-4pc8.onrender.com/auth/student-login"
-          : "http://https://face-recognition-2-4pc8.onrender.com/auth/admin-login";
+          ? "https://face-recognition-2-4pc8.onrender.com/auth/student-login"
+          : "https://face-recognition-2-4pc8.onrender.com/auth/admin-login";
 
       const response = await fetch(endpoint, {
         method: "POST",

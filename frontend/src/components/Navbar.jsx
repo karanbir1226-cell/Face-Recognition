@@ -18,13 +18,13 @@ function Navbar() {
       try {
         const [studentsResponse, attendanceResponse] =
           await Promise.all([
-            fetch("http://https://face-recognition-2-4pc8.onrender.com/students/", {
+            fetch("https://face-recognition-2-4pc8.onrender.com/students/", {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
             }),
 
-            fetch("http://https://face-recognition-2-4pc8.onrender.com/attendance/", {
+            fetch("https://face-recognition-2-4pc8.onrender.com/attendance/", {
               headers: {
                 Authorization: `Bearer ${token}`,
               },

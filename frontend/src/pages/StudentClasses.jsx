@@ -21,7 +21,7 @@ function StudentClasses() {
         }
 
         const response = await fetch(
-          "http://https://face-recognition-2-4pc8.onrender.com/classes/my-classes",
+          "https://face-recognition-2-4pc8.onrender.com/classes/my-classes",
           {
             headers: {
               Authorization: `Bearer ${token}`,

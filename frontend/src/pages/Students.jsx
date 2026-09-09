@@ -10,7 +10,7 @@ function Students() {
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
 
-    fetch("http://https://face-recognition-2-4pc8.onrender.com/students/", {
+    fetch("https://face-recognition-2-4pc8.onrender.com/students/", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
