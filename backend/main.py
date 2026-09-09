@@ -16,7 +16,7 @@ import numpy as np
 
 from database import Base, engine, SessionLocal
 import models
-from schemas import StudentUpdate
+
 
 # =========================================================
 # CREATE DATABASE TABLES
@@ -194,6 +194,14 @@ class StudentCreate(BaseModel):
     semester: str | None = None
     status: str = "Active"
 
+class StudentUpdate(BaseModel):
+    name: str
+    email: str
+    phone: str | None = None
+    course: str | None = None
+    department: str | None = None
+    semester: str | None = None
+    status: str = "Active"
 
 class FaceRegistration(BaseModel):
     face_image: str
@@ -410,7 +418,10 @@ def get_my_attendance_summary(
 # =========================================================
 
 @app.post("/auth/create-admin")
-def create_admin(db: Session = Depends(get_db)):
+def create_admin(
+    current_admin: models.User = Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
 
     existing_admin = (
         db.query(models.User)
@@ -483,11 +494,12 @@ def admin_login(login: AdminLogin, db: Session = Depends(get_db)):
     }
 @app.post("/auth/create-student-account")
 def create_student_account(
-    account: StudentCreateAccount,
+    data: StudentCreateAccount,
+    current_admin: models.User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     student = db.query(models.Student).filter(
-        models.Student.student_id == account.student_id
+      models.Student.student_id == data.student_id
     ).first()
 
     if not student:
@@ -497,7 +509,7 @@ def create_student_account(
         )
 
     existing_user = db.query(models.User).filter(
-        models.User.username == account.username
+        models.User.username == data.username
     ).first()
 
     if existing_user:
@@ -507,7 +519,7 @@ def create_student_account(
         )
 
     existing_student_account = db.query(models.User).filter(
-        models.User.student_id == account.student_id
+        models.User.student_id == data.student_id
     ).first()
 
     if existing_student_account:
@@ -517,10 +529,10 @@ def create_student_account(
         )
 
     user = models.User(
-        username=account.username,
-        password_hash=hash_password(account.password),
+        username=data.username,
+        password_hash=hash_password(data.password),
         role="student",
-        student_id=account.student_id
+        student_id=data.student_id
     )
 
     db.add(user)
@@ -618,6 +630,7 @@ def get_students(
             "department": student.department,
             "semester": student.semester,
             "status": student.status,
+            "face_image": student.face_image,
         }
         for student in students
     ]
@@ -772,6 +785,7 @@ def update_student(
 def register_face(
     student_id: str,
     face: FaceRegistration,
+    current_admin: models.User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
 
@@ -842,13 +856,14 @@ def register_face(
 # MARK ATTENDANCE
 # =========================================================
 
+
+
 @app.post("/attendance/")
 def mark_attendance(
     student_id: str,
+    current_admin: models.User = Depends(get_current_admin),
     db: Session = Depends(get_db)
-):
-
-    # Find student
+):# Find student
     student = (
         db.query(models.Student)
         .filter(
@@ -1155,6 +1170,7 @@ def recognize_face(
 
 @app.get("/attendance/")
 def get_attendance(
+    current_admin: models.User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
 
